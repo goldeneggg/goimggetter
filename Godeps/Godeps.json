@@ -1,0 +1,29 @@
+{
+	"ImportPath": "github.com/goldeneggg/goimggetter",
+	"GoVersion": "go1.3.3",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "code.google.com/p/cascadia",
+			"Comment": "null-30",
+			"Rev": "4f03c71bc42ba0015a68bea86422f0ecbb71bf70"
+		},
+		{
+			"ImportPath": "github.com/PuerkitoBio/goquery",
+			"Comment": "v0.3.2-26-g330b1c8",
+			"Rev": "330b1c81328751d7a27518abe41ea160d4652a07"
+		},
+		{
+			"ImportPath": "github.com/jessevdk/go-flags",
+			"Comment": "v1-211-g7dff25f",
+			"Rev": "7dff25ff3dc42258f880b5388ac9251bc54be0bb"
+		},
+		{
+			"ImportPath": "golang.org/x/net/html",
+			"Comment": "null-196",
+			"Rev": "85c27507c4185e5eb889b6c69e4a3542153fb4e1"
+		}
+	]
+}

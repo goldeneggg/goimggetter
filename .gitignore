@@ -1,0 +1,10 @@
+*.swp
+*.log
+img/
+*DS_Store
+MEMO.md
+*.sh
+*.test
+.profile
+Godeps/Readme
+Godeps/_workspace
