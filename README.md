@@ -1,4 +1,4 @@
-goimggetter
+goimggetter [![Build Status](https://drone.io/github.com/goldeneggg/goimggetter/status.png)](https://drone.io/github.com/goldeneggg/goimggetter/latest) [![GoDoc](https://godoc.org/github.com/goldeneggg/goimggetter?status.png)](https://godoc.org/github.com/goldeneggg/goimggetter) [![MIT License](http://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/goldeneggg/goimggetter/blob/master/LICENSE)
 ===========
 
 __goimggetter__ is image download tool by Go.
