@@ -64,6 +64,28 @@ Help Options:
 * flickr : using `-s flickr` option
 
 
+## Development
+
+1. `go get -u github.com/golang/dep/cmd/dep`
+1. `make dep`
+1. `make`
+1. `make invoke-help`
+1. Write your code.
+1. `make test`
+1. If all tests are pathed, create your pull request.
+
+
+### Initial Development (for me)
+
+1. `go get -u github.com/golang/dep/cmd/dep`
+1. `dep init`
+1. `make dep`
+1. `make`
+1. `make invoke-help`
+
+
+
+
 ## ChangeLog
 [CHANGELOG](CHANGELOG) file for details.
 

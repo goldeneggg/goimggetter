@@ -13,7 +13,7 @@ import (
 const (
 	TIMEOUT_SEC = 60
 	IMG_DIR     = "img/"
-	USER_AGENT  = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36"
+	USER_AGENT  = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36"
 )
 
 type imgGetter struct {
@@ -99,6 +99,37 @@ func configureScraper(site string, query string, page int) {
 	}
 }
 
+func httpGet(url string) (*http.Response, error) {
+	// client object
+	client := &http.Client{Timeout: time.Duration(TIMEOUT_SEC * time.Second)}
+
+	// request object
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+
+	// user-agent and referer
+	req.Header.Add("User-Agent", USER_AGENT)
+	if referer := scr.getReferer(); len(referer) > 0 {
+		req.Header.Add("Referer", referer)
+	}
+
+	// http access
+	resp, err := client.Do(req)
+	if err != nil {
+		return nil, err
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		err := fmt.Errorf("Invalid StatusCode: %v, Status: %v", resp.StatusCode, resp.Status)
+		resp.Body.Close()
+		return nil, err
+	}
+
+	return resp, nil
+}
+
 func mkHistDir(result string) bool {
 	os.Mkdir(IMG_DIR, 0755)
 
@@ -112,24 +143,8 @@ func mkHistDir(result string) bool {
 }
 
 func save(src string) bool {
-	// client object
-	client := &http.Client{Timeout: time.Duration(TIMEOUT_SEC * time.Second)}
-
-	// request object
-	req, err := http.NewRequest("GET", src, nil)
-	if err != nil {
-		l.err(err)
-		return false
-	}
-
-	// user-agent and referer
-	req.Header.Add("User-Agent", USER_AGENT)
-	if referer := scr.getReferer(); len(referer) > 0 {
-		req.Header.Add("Referer", referer)
-	}
-
 	// http access
-	resp, err := client.Do(req)
+	resp, err := httpGet(src)
 	if err != nil {
 		l.err(err)
 		return false
@@ -154,5 +169,4 @@ func save(src string) bool {
 		l.err(err)
 		return false
 	}
-
 }

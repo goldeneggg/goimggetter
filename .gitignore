@@ -6,5 +6,5 @@ MEMO.md
 *.sh
 *.test
 .profile
-Godeps/Readme
-Godeps/_workspace
+vendor
+bin
